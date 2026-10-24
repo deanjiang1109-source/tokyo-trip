@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>東京・富士 5日旅</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Huninn&display=swap">
+<style>
+:root{--paper:#FFFCF6;--ink:#3E3A39;--coral:#F2A497;--sun:#F6D27A;--sky:#A8D3E6;--green:#B9DAA5;color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+*,*::before,*::after{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:calc(72px + env(safe-area-inset-top,0px))}
+body{margin:0;background:var(--paper);color:var(--ink);font-family:"Huninn","PingFang TC","Noto Sans TC",sans-serif;line-height:1.6;font-size:16px}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);background:var(--paper);z-index:60}
+nav{position:sticky;top:env(safe-area-inset-top,0px);z-index:50;display:flex;gap:6px;padding:10px 12px;background:var(--paper);border-bottom:3px solid var(--ink);overflow-x:auto}
+nav a{flex:1;white-space:nowrap;text-align:center;color:var(--ink);text-decoration:none;border:3px solid var(--ink);border-radius:999px;padding:4px 12px;font-size:14px;background:#fff}
+nav a:nth-child(1){background:var(--coral)}nav a:nth-child(2){background:var(--sky)}nav a:nth-child(3){background:var(--sun)}nav a:nth-child(4){background:var(--green)}nav a:nth-child(5){background:var(--coral)}
+main{max-width:640px;margin:0 auto;padding:16px 16px 48px}
+section{margin-top:28px}
+h2{font-size:22px;margin:0 0 12px;display:inline-block;background:var(--sun);border:3px solid var(--ink);border-radius:16px;padding:2px 14px}
+.card{background:#fff;border:3px solid var(--ink);border-radius:24px;padding:16px;margin-bottom:14px}
+.hero{background:var(--sky);border:3px solid var(--ink);border-radius:32px;padding:12px 12px 20px;text-align:center;overflow:hidden}
+.hero svg{width:100%;height:auto;display:block}
+.hero h1{margin:6px 0 2px;font-size:28px}
+.hero p{margin:0;font-size:14px}
+.count{display:inline-flex;gap:8px;align-items:center;margin-top:12px;background:var(--paper);border:3px solid var(--ink);border-radius:20px;padding:6px 16px;font-size:15px}
+.count b{font-size:28px;color:#d4604c}
+.flight{display:flex;align-items:center;gap:10px}
+.flight.go{background:var(--coral)}.flight.back{background:var(--green)}
+.flight .c{flex:1;text-align:center}
+.flight .c b{font-size:24px;display:block}
+.flight .c small{font-size:12px}
+.flight .mid{flex:1.2;text-align:center;font-size:12px}
+.flight .mid hr{border:0;border-top:3px dashed var(--ink);margin:4px 0}
+.tag{display:inline-block;font-size:12px;border:2px solid var(--ink);border-radius:999px;padding:0 9px;background:#fff;margin-right:4px;white-space:nowrap}
+.tabs{display:flex;gap:8px;overflow-x:auto;padding:4px 2px 10px}
+.tab{flex:0 0 auto;font-family:inherit;color:var(--ink);background:#fff;border:3px solid var(--ink);border-radius:18px;padding:4px 12px;text-align:center;cursor:pointer;line-height:1.3}
+.tab b{display:block;font-size:17px}.tab small{font-size:11px}
+.tab[aria-selected=true]{background:var(--sun)}
+.day-title{margin:4px 0 14px;font-size:18px}
+#tl{list-style:none;margin:0;padding:0 0 0 18px;border-left:3px dashed var(--ink)}
+#tl li{position:relative;margin-bottom:14px;background:#fff;border:3px solid var(--ink);border-radius:20px;padding:10px 14px}
+#tl li::before{content:"";position:absolute;left:-31px;top:16px;width:16px;height:16px;border:3px solid var(--ink);border-radius:50%;background:var(--coral)}
+#tl li.must{background:#FFF6D8}
+#tl li.must::before{background:var(--sun)}
+.time{font-size:13px}
+.ttl{font-size:17px;font-weight:bold}
+.note{font-size:13px;margin-top:2px;opacity:.85}
+.must-badge{background:var(--coral);border:2px solid var(--ink);border-radius:999px;font-size:12px;padding:0 8px;margin-left:6px;vertical-align:2px}
+.m-飛機{background:var(--sky)}.m-電車{background:var(--green)}.m-巴士{background:var(--sun)}.m-步行{background:#fff}.m-計程車{background:var(--coral)}.m-纜車{background:var(--sky)}
+.pop{animation:pop .5s cubic-bezier(.3,1.6,.5,1) both}
+@keyframes pop{0%{transform:scale(.88) translateY(14px);opacity:0}100%{transform:none;opacity:1}}
+#todo label{display:flex;gap:12px;align-items:center;padding:8px 0;cursor:pointer;border-bottom:2px dotted var(--ink)}
+#todo label:last-child{border:0}
+#todo input{appearance:none;flex:0 0 26px;width:26px;height:26px;border:3px solid var(--ink);border-radius:9px;background:#fff;margin:0;cursor:pointer;position:relative}
+#todo input:checked{background:var(--green)}
+#todo input:checked::after{content:"";position:absolute;left:6px;top:1px;width:7px;height:13px;border:solid var(--ink);border-width:0 3px 3px 0;transform:rotate(45deg)}
+#todo input:checked+span{text-decoration:line-through;opacity:.55}
+.hotel h3{margin:0 0 4px;font-size:18px}
+.hotel p{margin:2px 0;font-size:13px}
+.hotel:nth-of-type(1){background:#FDE9E5}.hotel:nth-of-type(2){background:#EAF4F9}.hotel:nth-of-type(3){background:#F0F7EA}
+footer{text-align:center;font-size:12px;margin-top:32px}
+.bob{animation:bob 4s ease-in-out infinite;transform-box:fill-box;transform-origin:center}
+.drift{animation:drift 14s ease-in-out infinite alternate}
+.fall{animation:fall 7s linear infinite}
+@keyframes bob{50%{transform:translateY(-8px) rotate(-2deg)}}
+@keyframes drift{to{transform:translateX(40px)}}
+@keyframes fall{0%{transform:translate(0,-10px) rotate(0);opacity:0}15%{opacity:1}100%{transform:translate(-30px,150px) rotate(240deg);opacity:0}}
+@media (prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;scroll-behavior:auto!important;transition:none!important}}
+</style>
+</head>
+<body>
+<nav>
+<a href="#home">首頁</a><a href="#flight">航班</a><a href="#plan">行程</a><a href="#todo">待辦</a><a href="#stay">住宿</a>
+</nav>
+<main>
+<section id="home" style="margin-top:0">
+<div class="hero">
+<svg viewBox="0 0 360 220" role="img" aria-label="富士山、鳥居、飛機與櫻花的插圖">
+<rect width="360" height="220" fill="#A8D3E6"/>
+<g class="drift"><ellipse cx="70" cy="45" rx="30" ry="12" fill="#fff" stroke="#3E3A39" stroke-width="3"/><ellipse cx="92" cy="38" rx="18" ry="10" fill="#fff" stroke="#3E3A39" stroke-width="3"/></g>
+<g class="drift" style="animation-delay:-6s"><ellipse cx="270" cy="70" rx="26" ry="10" fill="#fff" stroke="#3E3A39" stroke-width="3"/></g>
+<circle cx="300" cy="35" r="18" fill="#F2A497" stroke="#3E3A39" stroke-width="3"/>
+<path d="M60 190 L170 62 L280 190Z" fill="#B9DAA5" stroke="#3E3A39" stroke-width="3" stroke-linejoin="round"/>
+<path d="M142 94 L170 62 L198 94 L184 88 L170 98 L156 88Z" fill="#fff" stroke="#3E3A39" stroke-width="3" stroke-linejoin="round"/>
+<path d="M0 190 Q90 170 180 190 T360 188 V220 H0Z" fill="#F6D27A" stroke="#3E3A39" stroke-width="3"/>
+<g stroke="#3E3A39" stroke-width="3" stroke-linejoin="round"><rect x="40" y="146" width="8" height="44" fill="#F2A497"/><rect x="82" y="146" width="8" height="44" fill="#F2A497"/><path d="M30 144 Q65 136 100 144 L98 134 Q65 126 32 134Z" fill="#F2A497"/><rect x="42" y="154" width="46" height="6" fill="#F2A497"/></g>
+<g stroke="#3E3A39" stroke-width="3" stroke-linejoin="round"><rect x="250" y="160" width="76" height="26" rx="8" fill="#fff"/><rect x="256" y="166" width="14" height="10" rx="2" fill="#A8D3E6"/><rect x="276" y="166" width="14" height="10" rx="2" fill="#A8D3E6"/><rect x="296" y="166" width="14" height="10" rx="2" fill="#A8D3E6"/><circle cx="264" cy="190" r="5" fill="#3E3A39"/><circle cx="312" cy="190" r="5" fill="#3E3A39"/></g>
+<g class="bob"><g stroke="#3E3A39" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"><path d="M110 60 Q140 48 178 56 L196 52 L190 62 L170 68 Q140 74 110 66Z" fill="#fff"/><path d="M142 62 L132 82 L156 70Z" fill="#F2A497"/><path d="M122 60 L118 46 L130 56Z" fill="#F2A497"/></g></g>
+<g fill="#F2A497" stroke="#3E3A39" stroke-width="2"><circle class="fall" cx="230" cy="20" r="5"/><circle class="fall" cx="130" cy="10" r="4" style="animation-delay:-3s"/><circle class="fall" cx="320" cy="30" r="5" style="animation-delay:-5s"/><circle class="fall" cx="30" cy="30" r="4" style="animation-delay:-1.5s"/></g>
+</svg>
+<h1>東京・富士 5日旅</h1>
+<p>2026/11/14 – 11/18　新宿・銀座・河口湖・高尾山・池袋</p>
+<div class="count" id="count">出發倒數 <b id="days">--</b> 天</div>
+</div>
+</section>
+
+<section id="flight">
+<h2>航班</h2>
+<div class="card flight go"><div class="c"><b>07:55</b><small>桃園 T2</small></div><div class="mid">長榮 BR184<hr>11/14（六）</div><div class="c"><b>12:00</b><small>成田 T1</small></div></div>
+<div class="card flight back"><div class="c"><b>15:40</b><small>成田 T2</small></div><div class="mid">星宇 JX803<hr>11/18（三）</div><div class="c"><b>18:45</b><small>桃園 T1</small></div></div>
+</section>
+
+<section id="plan">
+<h2>每日行程</h2>
+<div class="tabs" id="tabs" role="tablist"></div>
+<h3 class="day-title" id="dt"></h3>
+<ol id="tl"></ol>
+</section>
+
+<section id="todo">
+<h2>待辦清單</h2>
+<div class="card"></div>
+</section>
+
+<section id="stay">
+<h2>住宿</h2>
+<div class="card hotel"><h3>新宿華盛頓飯店本館</h3><p><span class="tag">11/14 – 11/15</span><span class="tag">11/17 – 11/18</span></p><p>〒160-8336 東京都新宿区西新宿3-2-9</p><p>11/15 退房時，大行李跨日寄放至 11/17。</p></div>
+<div class="card hotel"><h3>富士河口湖溫泉 湖南莊</h3><p><span class="tag">11/15 一泊二食</span></p><p>〒401-0301 山梨県南都留郡富士河口湖町船津4020</p><p>會席料理晚餐 18:30，頂樓足湯看夜景。</p></div>
+<div class="card hotel"><h3>富士湖飯店 Fuji Lake Hotel</h3><p><span class="tag">11/16 – 11/17</span></p><p>〒401-0301 山梨県南都留郡富士河口湖町船津1</p><p>周遊巴士紅線「富士レークホテル」站（7號）下車。</p></div>
+</section>
+<footer>行程資料來自 Notion，出發前請再確認班次與營業時間。</footer>
+</main>
+<script>
+const D=[
+["11/14 六","成田・新宿・銀座",[
+["07:55–12:00","桃園 → 成田（BR184）","飛機","長榮直飛；早餐在桃機貴賓室"],
+["12:00–13:10","入境、領行李","步行","視入境人潮彈性調整"],
+["13:14–14:41","成田機場 → 新宿","電車","N’EX 成田特快，全車指定席（暫定班次）"],
+["14:45–15:30","新宿華盛頓飯店入住","步行","確認 11/15 起跨日寄放大行李"],
+["15:30–16:00","前往銀座","電車","丸之內線直達，約 16–20 分"],
+["16:00–18:50","銀座逛街","步行","必逛 Workman Colors（EXITMELSA 5F，營業至 20:00）、Uniqlo 旗艦店、Ginza Six",1],
+["19:00–21:00","晚餐：敘敘苑 游玄亭","步行","已訂位 19:00，銀座並木通店 5F",1],
+["點心","銀座甜點","步行","塩麵包屋／銀座木村家／Centre The Bakery／銀座 月與花"],
+["21:00–21:30","返回飯店","電車","丸之內線回新宿"]]],
+["11/15 日","下北澤・神樂坂・河口湖",[
+["08:00–08:50","退房、寄放行李","步行","大行李寄至 11/17；登機箱寄放バスタ新宿 4F 投幣櫃（約 ¥600–800）"],
+["08:50–09:10","前往下北澤","電車","小田急小田原線，約 7–10 分"],
+["09:10–10:35","下北澤巡禮","步行","東口廣場 → 本多劇場 → Tree Mural → SHELTER",1],
+["10:35–12:30","商店街散步、午餐","步行","首選 46ma 咖哩；備案 たまごけん"],
+["12:30–14:50","神樂坂漫遊","電車","小田急轉東西線／大江戶線；兵庫橫丁、赤城神社、la kagu"],
+["14:50–15:45","取登機箱、巴士報到","電車","大江戶線至新宿，バスタ新宿 4F；15:45 發車（1375号 1号車）"],
+["15:45–17:20","新宿 → 河口湖","巴士","高速巴士直達，週末可能微塞車"],
+["17:20–18:30","湖南莊入住","步行","步行約 10–12 分，或請飯店接駁"],
+["18:30–20:30","會席料理、泡湯","步行","享受溫泉、頂樓足湯"]]],
+["11/16 一","河口湖・富士山・紅葉",[
+["07:30–08:45","早餐、退房，寄放行李","步行","行李寄放富士湖飯店，步行約 5–6 分"],
+["09:10–09:25","前往河口淺間神社","巴士","みはらし前 → 河口局前，可刷 IC 卡"],
+["09:25–10:45","天空鳥居（遙拜所）","步行","上坡約 20–25 分；維護費約 ¥100",1],
+["11:15–11:30","前往本町通","計程車","可用 GO App；車資約 ¥2,500–3,500"],
+["11:30–12:30","午餐：桜井うどん","步行","本町通周邊"],
+["12:30–13:30","本町通街景","步行","日川時計店周邊，富士山掛在街底；請於人行道拍攝"],
+["13:50–15:30","忠靈塔（新倉山淺間公園）","步行","爬 398 階；下午順光拍五重塔＋富士山",1],
+["16:00–16:45","下吉田 → 河口湖站 → 楓葉迴廊","電車","富士急電車，再轉周遊巴士紅線至一竹美術館站"],
+["16:45–17:50","楓葉迴廊黃昏＋點燈","步行","約 16:40 日落並開始點燈",1],
+["17:55–18:25","返回飯店","巴士","務必搭 18:00 前後末班周遊巴士，富士レークホテル站下車"],
+["19:15–20:45","會席晚餐、泡湯","步行","點心：APPLE PIE lab"]]],
+["11/17 二","高尾山・池袋",[
+["06:45–07:50","早餐、退房，步行到河口湖站","步行","順拍 Lawson 河口湖站前店富士山"],
+["08:03–09:44","河口湖 → 大月 → 高尾","電車","富士急 08:03 → 大月 09:02；JR 中央本線 09:08 → 高尾 09:44"],
+["09:55–10:15","轉京王線、寄放登機箱","電車","高尾山口站寄物櫃約 ¥500"],
+["10:15–12:15","高尾山健行（1號路）","步行","約 70–80 分登頂，山頂眺望富士山",1],
+["12:15–12:45","纜車下山","纜車","步行約 20 分到高尾山站，纜車約 6 分"],
+["13:06–14:03","高尾山口 → 新宿","電車","京王線特急直達，¥430"],
+["14:20–15:15","午餐：AFURI 阿夫利","步行","新宿 LUMINE 1 B2F；柚子鹽拉麵",1],
+["15:15–15:30","飯店入住、取大行李","步行","新宿華盛頓飯店本館"],
+["15:30–19:00","池袋逛街","電車","山手線約 8 分；Sunshine City 扭蛋、Bic Camera；點心 TRUFFLE mini"],
+["19:00–21:00","池袋晚餐、返回飯店","電車","みなと 或 築地食堂源ちゃん；山手線／丸之內線回新宿"]]],
+["11/18 三","新宿・成田・台北",[
+["07:30–08:00","退房、寄放行李","步行","所有行李寄放櫃檯"],
+["08:00–09:00","早餐：Sawamura Bakery","步行","NEWoMan 新宿 2F，07:00 開始營業"],
+["09:00–10:00","西新宿散步","步行","新宿中央公園、都廳周邊"],
+["10:00–10:55","東京都廳展望室","步行","45 樓遠眺東京與富士山",1],
+["11:00–11:35","取行李、前往 N’EX 月台","步行","JR 新宿站 5・6 號月台"],
+["11:38–12:54","新宿 → 成田 T2","電車","N’EX 23 號，全車指定席"],
+["12:55–15:20","星宇報到、安檢、免稅店","步行","JX803 託運；採買伴手禮"],
+["15:40–18:45","成田 → 桃園（JX803）","飛機","預計 18:45 抵達桃園 T1，平安返家",1]]]];
+const T=["護照","N’EX 成田特快車票（11/14、11/18）","高速巴士票（11/15 1375号）","IC 卡（Suica／PASMO）","敘敘苑 游玄亭訂位確認（11/14 19:00）","下載 GO App（叫計程車）","日幣現金與網路（eSIM／分享器）","行動電源與相機電池","確認河口湖周遊巴士紅線末班時間"];
+const $=s=>document.querySelector(s);
+const tabs=$("#tabs"),tl=$("#tl");
+function show(i,anim){
+tabs.querySelectorAll(".tab").forEach((b,j)=>b.setAttribute("aria-selected",j==i));
+const d=D[i];$("#dt").textContent="Day "+(i+1)+"｜"+d[1];
+tl.innerHTML="";
+d[2].forEach((r,k)=>{const li=document.createElement("li");if(r[4])li.className="must";
+if(anim){li.className+=" pop";li.style.animationDelay=k*40+"ms"}
+const t=document.createElement("div");t.className="time";t.textContent=r[0];
+const m=document.createElement("span");m.className="tag m-"+r[2];m.textContent=r[2];
+t.prepend(m);
+const h=document.createElement("div");h.className="ttl";h.textContent=r[1];
+if(r[4]){const b=document.createElement("span");b.className="must-badge";b.textContent="必去";h.append(b)}
+const n=document.createElement("div");n.className="note";n.textContent=r[3];
+li.append(t,h,n);tl.append(li)});}
+D.forEach((d,i)=>{const b=document.createElement("button");b.className="tab";b.setAttribute("role","tab");
+b.innerHTML="<b>"+d[0].split(" ")[0]+"</b><small>"+d[0].split(" ")[1]+"</small>";
+b.onclick=()=>show(i,true);tabs.append(b)});
+show(0,false);
+// todo
+let st={};try{st=JSON.parse(localStorage.getItem("tokyo-todo")||"{}")}catch(e){}
+const box=document.querySelector("#todo .card");
+T.forEach((x,i)=>{const l=document.createElement("label");const c=document.createElement("input");c.type="checkbox";c.checked=!!st[i];
+c.onchange=()=>{st[i]=c.checked;try{localStorage.setItem("tokyo-todo",JSON.stringify(st))}catch(e){}};
+const s=document.createElement("span");s.textContent=x;l.append(c,s);box.append(l)});
+// countdown
+const diff=new Date("2026-11-14T07:55:00+08:00")-Date.now();
+$("#days").textContent=diff>0?Math.ceil(diff/864e5):0;
+if(diff<=0)$("#count").textContent="旅程進行中，玩得開心！";
+</script>
+</body>
+</html>
